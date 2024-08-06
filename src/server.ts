@@ -8,6 +8,7 @@ import fastifyMultipart from '@fastify/multipart';
 import fastifyJwt from '@fastify/jwt';
 
 dotenv.config();
+const port = process.env.PORT || 3333;
 
 const app = fastify({ logger: true });
 
@@ -35,7 +36,7 @@ const start = async () => {
     // Registra o plugin de impressão de rotas
  
     try {
-        await app.listen({ port: 3333 });
+        await app.listen(port);
         console.log('Server is running on http://localhost:3333');
        // console.log(app.printRoutes());
     } catch (error) {
