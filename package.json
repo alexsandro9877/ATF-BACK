@@ -2,12 +2,11 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "src/server.ts",
-
+  "main": "dist/server.js",
   "scripts": {
     "dev": "npx tsx watch src/server.ts",
     "build": "tsc",
-    "start": "npx tsx watch src/server.ts"
+    "start": "node dist/server.js"
   },
   "keywords": [],
   "author": "",
