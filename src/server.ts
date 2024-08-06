@@ -7,7 +7,8 @@ import fastifyMultipart from '@fastify/multipart';
 import fastifyJwt from '@fastify/jwt';
 
 dotenv.config();
-const port = parseInt(process.env.PORT || '3333', 10);
+const port = parseInt(process.env.PORT || '3000', 10);
+
 
 const app = fastify({ logger: true });
 
