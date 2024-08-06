@@ -2,10 +2,8 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "engines": {
-    "node": "14.x"
-  },
+  "main": "src/server.ts",
+
   "scripts": {
     "dev": "npx tsx watch src/server.ts",
     "build": "tsc",
