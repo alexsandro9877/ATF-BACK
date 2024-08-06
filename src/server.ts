@@ -4,24 +4,22 @@ import fastifyCookie from '@fastify/cookie';
 import dotenv from 'dotenv';
 import { routes } from './routes/routes';
 import fastifyMultipart from '@fastify/multipart';
-
 import fastifyJwt from '@fastify/jwt';
 
 dotenv.config();
-const port = process.env.PORT || 3333;
+const port = parseInt(process.env.PORT || '3333', 10);
 
 const app = fastify({ logger: true });
 
 const start = async () => {
     await app.register(cors);
     await app.register(fastifyCookie);
-    
-    app.register(fastifyMultipart);
-    app.register(fastifyJwt, {
+    await app.register(fastifyMultipart);
+    await app.register(fastifyJwt, {
         secret: process.env.JWT_SECRET!,
     });
 
-    app.register(routes);
+    await app.register(routes);
 
     // Middleware de autenticação para proteger rotas
     // app.addHook('onRequest', async (request, reply) => {
@@ -33,12 +31,10 @@ const start = async () => {
     //         }
     //     }
     // });
-    // Registra o plugin de impressão de rotas
- 
+
     try {
-        await app.listen(port);
-        console.log('Server is running on http://localhost:3333');
-       // console.log(app.printRoutes());
+        await app.listen({ port, host: '0.0.0.0' });
+        console.log(`Server is running on http://localhost:${port}`);
     } catch (error) {
         app.log.error(error);
         process.exit(1);
